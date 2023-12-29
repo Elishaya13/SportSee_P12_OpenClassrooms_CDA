@@ -1,0 +1,48 @@
+#topbar {
+    display: flex;
+    background-color: var(--primary-color);
+    width: 100%;
+    height: 91px;
+
+}
+
+.topbar_left {
+    width: 20%;
+    color: var(--secondary-color);
+    font-size: var(--fontSize-m);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.topbar_left img {
+    padding-left: 1em;
+}
+
+.topbar_right {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-size: var(--fontSize-m);
+}
+
+.topbar_right ul {
+    width: 100%;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    list-style: none;
+
+}
+
+.topbar_right a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.topbar_right a:hover {
+    color: var(--secondary-color)
+}

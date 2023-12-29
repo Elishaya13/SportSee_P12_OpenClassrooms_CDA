@@ -1,0 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+}
+
+:root {
+  --primary-color: #020203;
+  --secondary-color: #FF0101;
+  --fontSize-m: 1.5em
+    /* 24px */
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
