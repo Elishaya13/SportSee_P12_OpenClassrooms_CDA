@@ -1,8 +1,8 @@
 import './dashboard.css';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { getUserById } from '../services/userService';
-import { UserData } from '../interfaces/users';
+import { getActivityById, getUserById } from '../services/userService';
+import { ActivityData, UserData } from '../interfaces/users';
 import Header from '../components/dashboard/header';
 import Activity from '../components/dashboard/activity';
 import Performance from '../components/dashboard/performance';
@@ -13,6 +13,7 @@ import NutritionInfo from '../components/dashboard/nutritionInfo';
 const Dashboard = () => {
   const { userId } = useParams<{ userId: string }>();
   const [user, setUser] = useState<UserData | null>(null);
+  const [userActivity, setUserActivity] = useState<ActivityData | null>(null);
   // const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -22,6 +23,9 @@ const Dashboard = () => {
     getUserById(parseInt(userId, 10)).then((json) => {
       setUser(json);
     });
+    getActivityById(parseInt(userId, 10)).then((json) => {
+      setUserActivity(json);
+    });
     //  .catch((e) => setError(e));
   }, [userId]);
 
@@ -29,8 +33,9 @@ const Dashboard = () => {
     return <div id="dashboard_error">L&apos;utilisateur est inexistant</div>;
   }
 
-  if (user) {
+  if (user && userActivity) {
     const { userInfos, keyData } = user;
+    const { sessions } = userActivity;
     return (
       <div id="dashboard_wrapper">
         <div className="dashboard_header">
@@ -39,7 +44,7 @@ const Dashboard = () => {
         <div className="dashboard_content">
           <div className="dashboard_section_left">
             <div className="dashboard_section_left_first">
-              <Activity />
+              <Activity sessions={sessions} />
             </div>
             <div className="dashboard_section_left_second">
               <Session />

@@ -17,3 +17,13 @@ export interface UserData {
   todayScore: number;
   keyData: KeyData;
 }
+
+export interface ActivitySessionsProps {
+  day: string;
+  kilogram: number;
+  calories: number;
+}
+export interface ActivityData {
+  userId: number;
+  sessions: ActivitySessionsProps[];
+}

@@ -15,6 +15,20 @@ export const getUserById = async (userId: number) => {
   return data;
 };
 
+// Récupérer les données d'activité pour un utilisateur depuis le fichier JSON correspondant
+export const getActivityById = async (userId: number) => {
+  const useAPI = localStorage.getItem('useApi') === 'true';
+
+  const endpoint = useAPI
+    ? `http://localhost:3000/user/${userId}/activity`
+    : `/src/mocksData/userActivityData.json`;
+
+  const response = await fetch(endpoint);
+  const { data } = await response.json();
+  return data;
+};
+//     const response = await fetch(`/userActivityData.json`);
+
 // Récupérer les données de performance pour un utilisateur depuis le fichier JSON correspondant
 // export const getUserPerformanceById = async (userId, useAPI) => {
 //       response = await fetch(
@@ -23,10 +37,6 @@ export const getUserById = async (userId: number) => {
 
 //       response = await fetch(`/src/mocks/userPerformanceData.json`);
 //   const response = await fetch(`/userPerformanceData.json`);
-
-// Récupérer les données d'activité pour un utilisateur depuis le fichier JSON correspondant
-// export const getActivityById = async (userId) => {}
-//     const response = await fetch(`/userActivityData.json`);
 
 // Récupérer les sessions moyennes pour un utilisateur depuis le fichier JSON correspondant
 // export const getAverageSessionsById = async (userId) => {
