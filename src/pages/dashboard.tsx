@@ -30,7 +30,7 @@ const Dashboard = () => {
   }
 
   if (user) {
-    const { userInfos } = user;
+    const { userInfos, keyData } = user;
     return (
       <div id="dashboard_wrapper">
         <div className="dashboard_header">
@@ -48,7 +48,7 @@ const Dashboard = () => {
             </div>
           </div>
           <div className="dashboard_section_right">
-            <NutritionInfo />
+            <NutritionInfo keyData={keyData} />
           </div>
         </div>
       </div>

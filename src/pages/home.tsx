@@ -21,7 +21,7 @@ const Home = () => {
       <div id="home_content">
         <div className="home_content_header">
           <p style={{ fontWeight: 'bold' }}>
-            Bienvenue, cette page existe pour les besoins de la démonstration du
+            Bienvenue, cette page existe pour les besoins de démonstration du
             projet
           </p>{' '}
           <img className="home_icon" src={previeuwImg} alt="previeuw"></img>
@@ -30,15 +30,18 @@ const Home = () => {
           </p>{' '}
         </div>
         <div className="home_content_select">
-          <p>Veuillez séléctionner la source des data</p>
-          <button onClick={toggleAPIUsage}>Changer la source</button>
           {isUseAPI ? (
             <p className="data_select_info_text">
               Données actuellement récupérées de l&apos;api
             </p>
           ) : (
-            <p className="data_select_info_text">Données depuis le mock</p>
+            <p className="data_select_info_text">
+              Données actuellement récupérées depuis le mock
+            </p>
           )}
+          {/* <p>Veuillez séléctionner la source des data</p> */}
+          <button onClick={toggleAPIUsage}>Changer la source</button>
+          <p>Choisir un Utilisateur</p>
           <nav>
             <ul className="user_select">
               <li>

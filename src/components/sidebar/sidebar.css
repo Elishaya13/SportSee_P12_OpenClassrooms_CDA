@@ -8,6 +8,8 @@
     height: 689px;
 }
 
+
+
 .icons_part {
     flex: 9;
     display: flex;
@@ -35,4 +37,10 @@
     color: #fff;
     transform: rotate(270deg) translateY(-50%);
     text-wrap: nowrap;
+}
+
+@media screen and (min-height: 690px) {
+    #sidebar_wrapper {
+        height: 100vh;
+    }
 }

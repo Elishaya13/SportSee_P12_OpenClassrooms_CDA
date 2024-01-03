@@ -1,0 +1,48 @@
+.nutrition_card_wrapper {
+    background-color: var(--background-color);
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    width: 16.125em;
+    /* 258px */
+    height: 7.75em;
+    /* 124px */
+    box-shadow: 0px 2px 4px 0px #00000005;
+
+}
+
+.nutrition_icon_wrapper {
+    flex: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nutrition_icon_wrapper img {
+    height: 60px;
+    width: 60px;
+
+
+}
+
+.nutrition_values_wrapper {
+    display: flex;
+    flex-direction: column;
+    flex: 7;
+    display: flex;
+
+    justify-content: center;
+}
+
+.nutrition_values_wrapper p {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+}
+
+.nutrition_values_wrapper span {
+    color: var(--grey-color);
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 24px;
+}
