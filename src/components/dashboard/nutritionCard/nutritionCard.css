@@ -3,10 +3,8 @@
     border-radius: 10px;
     display: flex;
     justify-content: space-between;
-    width: 16.125em;
-    /* 258px */
-    height: 7.75em;
-    /* 124px */
+    width: 14.8em;
+    height: 6.5em;
     box-shadow: 0px 2px 4px 0px #00000005;
 
 }
@@ -45,4 +43,13 @@
     font-weight: 600;
     font-size: 14px;
     line-height: 24px;
+}
+
+@media screen and (min-height: 781px) {
+    .nutrition_card_wrapper {
+        width: 16.125em;
+        /* 258px */
+        height: 7.75em;
+        /* 124px */
+    }
 }

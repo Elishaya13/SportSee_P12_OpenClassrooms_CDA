@@ -1,31 +1,43 @@
 // Fonction pour récupérer les informations d'un utilisateur par ID en utilisant soit l'API soit les données mock
 
-export const getUserById = async (userId: number) => {
+import { ActivityData, ActivitySession } from '../interfaces/activity';
+import { User, UserData } from '../interfaces/users';
+import { get } from './api';
+
+const formatUserData = (userData: UserData): User => {
+  return {
+    ...userData,
+    todayScore: userData.score ?? userData.todayScore ?? 0,
+  };
+};
+
+export const getUserById = async (userId: number): Promise<User> => {
   const useAPI = localStorage.getItem('useApi') === 'true';
 
   const endpoint = useAPI
     ? `http://localhost:3000/user/${userId}`
     : `/src/mocksData/userData.json`;
 
-  const response = await fetch(endpoint);
+  const userData = await get<UserData>(endpoint);
 
   // if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
-  const { data } = await response.json();
-  return data;
+  return formatUserData(userData);
 };
 
 // Récupérer les données d'activité pour un utilisateur depuis le fichier JSON correspondant
-export const getActivityById = async (userId: number) => {
+export const getActivityById = async (
+  userId: number
+): Promise<ActivitySession[]> => {
   const useAPI = localStorage.getItem('useApi') === 'true';
 
   const endpoint = useAPI
     ? `http://localhost:3000/user/${userId}/activity`
     : `/src/mocksData/userActivityData.json`;
 
-  const response = await fetch(endpoint);
-  const { data } = await response.json();
-  return data;
+  const activityData = await get<ActivityData>(endpoint);
+
+  return activityData.sessions;
 };
 //     const response = await fetch(`/userActivityData.json`);
 

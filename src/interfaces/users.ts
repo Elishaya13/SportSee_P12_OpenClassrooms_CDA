@@ -14,16 +14,14 @@ export interface KeyData {
 export interface UserData {
   id: number;
   userInfos: UserInfos;
-  todayScore: number;
+  score?: number;
+  todayScore?: number;
   keyData: KeyData;
 }
 
-export interface ActivitySessionsProps {
-  day: string;
-  kilogram: number;
-  calories: number;
-}
-export interface ActivityData {
-  userId: number;
-  sessions: ActivitySessionsProps[];
+export interface User {
+  id: number;
+  userInfos: UserInfos;
+  todayScore: number;
+  keyData: KeyData;
 }

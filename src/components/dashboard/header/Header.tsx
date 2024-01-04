@@ -1,5 +1,5 @@
 import './header.css';
-import { UserInfos } from '../../interfaces/users';
+import { UserInfos } from '../../../interfaces/users';
 
 const Header = ({ firstName }: Pick<UserInfos, 'firstName'>) => {
   return (

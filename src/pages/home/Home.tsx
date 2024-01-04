@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './home.css';
-import previeuwImg from '../assets/images/preview.svg';
+import previeuwImg from '../../assets/images/preview.svg';
 
 const Home = () => {
   const [isUseAPI, setIsUseAPI] = useState<boolean>(
