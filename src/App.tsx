@@ -7,12 +7,13 @@ import {
   RouterProvider,
 } from 'react-router-dom';
 
-import Home from './pages/home';
-import Dashboard from './pages/dashboard';
-import UnderConstruction from './pages/underConstruction';
-import ErrorPage from './pages/error-page';
+import Home from './pages/home/Home';
+
+import UnderConstruction from './pages/underConstruction/UnderConstruction';
+import ErrorPage from './pages/errorPage/Error-page';
 import Topbar from './components/topbar/topbar';
 import SidebarNav from './components/sidebar/sidebar';
+import Dashboard from './pages/dashboard/Dashboard';
 
 export function App() {
   const router = createBrowserRouter(

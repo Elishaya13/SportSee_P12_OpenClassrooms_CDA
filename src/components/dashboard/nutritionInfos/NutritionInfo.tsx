@@ -1,10 +1,10 @@
 import './nutritionInfo.css';
-import NutritionCard from './nutritionCard';
-import { KeyData } from '../../interfaces/users';
-import calorieIcon from '../../assets/images/calories-icon.png';
-import proteinIcon from '../../assets/images/protein-icon.png';
-import carbIcon from '../../assets/images/carbs-icon.png';
-import fatIcon from '../../assets/images/fat-icon.png';
+import NutritionCard from '../nutritionCard/nutritionCard';
+import { KeyData } from '../../../interfaces/users';
+import calorieIcon from '../../../assets/images/calories-icon.png';
+import proteinIcon from '../../../assets/images/protein-icon.png';
+import carbIcon from '../../../assets/images/carbs-icon.png';
+import fatIcon from '../../../assets/images/fat-icon.png';
 
 const NutritionInfo = ({ keyData }: { keyData: KeyData }) => {
   return (

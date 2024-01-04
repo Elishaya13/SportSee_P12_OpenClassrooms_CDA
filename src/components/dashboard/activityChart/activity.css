@@ -1,0 +1,24 @@
+.activity_wrapper {
+    /* border: 1px solid red; */
+    background-color: var(--background-color);
+    height: 100%;
+    position: relative;
+    border-radius: 15px;
+    width: 520px;
+}
+
+.title_charts {
+    position: absolute;
+    top: 2em;
+    left: 30px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+@media screen and (min-height: 781px) {
+    .activity_wrapper {
+        width: 100%;
+    }
+
+
+}
