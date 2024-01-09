@@ -1,12 +1,11 @@
 .nutrition_card_wrapper {
     background-color: var(--background-color);
-    border-radius: 10px;
+    border-radius: 5px;
     display: flex;
     justify-content: space-between;
-    width: 14.8em;
-    height: 6.5em;
+    width: 100%;
+    height: 25%;
     box-shadow: 0px 2px 4px 0px #00000005;
-
 }
 
 .nutrition_icon_wrapper {
@@ -17,10 +16,8 @@
 }
 
 .nutrition_icon_wrapper img {
-    height: 60px;
-    width: 60px;
-
-
+    height: 50px;
+    width: 50px;
 }
 
 .nutrition_values_wrapper {
@@ -45,11 +42,15 @@
     line-height: 24px;
 }
 
-@media screen and (min-height: 781px) {
+@media (min-width: 1025px) {
     .nutrition_card_wrapper {
-        width: 16.125em;
-        /* 258px */
-        height: 7.75em;
-        /* 124px */
+        justify-content: space-between;
+        width: 14.8em;
+        height: 6.5em;
+    }
+
+    .nutrition_icon_wrapper img {
+        height: 60px;
+        width: 60px;
     }
 }

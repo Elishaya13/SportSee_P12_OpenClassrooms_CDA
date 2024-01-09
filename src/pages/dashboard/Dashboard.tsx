@@ -9,12 +9,10 @@ import Performance from '../../components/dashboard/performanceChart/Performance
 import Session from '../../components/dashboard/sessionsChart/session';
 import Score from '../../components/dashboard/scoreChart/score';
 import NutritionInfo from '../../components/dashboard/nutritionInfos/NutritionInfo';
-//import { ActivitySession } from '../interfaces/activity';
 
 const Dashboard = () => {
   const { userId } = useParams<{ userId: string }>();
   const [user, setUser] = useState<UserData | null>(null);
-  //const [userActivity, setUserActivity] = useState<ActivitySession | []>([]);
   // const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -32,7 +30,7 @@ const Dashboard = () => {
   }
 
   if (user) {
-    const { userInfos, keyData } = user;
+    const { userInfos, keyData, todayScore } = user;
     return (
       <div id="dashboard_wrapper">
         <div className="dashboard_header">
@@ -46,7 +44,7 @@ const Dashboard = () => {
             <div className="dashboard_section_left_second">
               <Session />
               <Performance />
-              <Score />
+              <Score todayScore={todayScore} />
             </div>
           </div>
           <div className="dashboard_section_right">
