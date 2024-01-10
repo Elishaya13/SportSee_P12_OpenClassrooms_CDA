@@ -49,10 +49,11 @@ const Activity = () => {
   return (
     <div className="activity_wrapper">
       <p className="title_charts">Activité quotidienne</p>
-      <ResponsiveContainer width="100%" height={235}>
+      <ResponsiveContainer width="100%" height={255}>
         <BarChart
           data={transformedData}
           margin={{ top: 5, right: 30, left: 30, bottom: 0 }}
+          barGap={7}
         >
           {' '}
           <CartesianGrid
@@ -74,10 +75,11 @@ const Activity = () => {
             dataKey="dayIndex"
             interval={0}
             stroke="#9B9EAC"
-            padding={{ right: 30 }}
+            padding={{ left: 11, right: 11 }}
             tickLine={false}
             tickMargin={10}
             axisLine={{ stroke: '#d5d5d5' }}
+            scale="point"
           >
             {' '}
           </XAxis>
@@ -92,6 +94,7 @@ const Activity = () => {
             stroke="#9B9EAC"
             axisLine={false}
             tickLine={false}
+            tickMargin={30}
           />
           <Tooltip
             content={({ active, payload }) => {
