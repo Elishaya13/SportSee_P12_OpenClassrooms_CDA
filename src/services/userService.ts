@@ -1,6 +1,7 @@
 // Fonction pour récupérer les informations d'un utilisateur par ID en utilisant soit l'API soit les données mock
 
 import { ActivityData, ActivitySession } from '../interfaces/activity';
+import { UserSession, UserSessionsData } from '../interfaces/sessions';
 import { User, UserData } from '../interfaces/users';
 import { get } from './api';
 
@@ -38,6 +39,20 @@ export const getActivityById = async (
   const activityData = await get<ActivityData>(endpoint);
 
   return activityData.sessions;
+};
+
+export const getSessionsById = async (
+  userId: number
+): Promise<UserSession[]> => {
+  const useAPI = localStorage.getItem('useApi') === 'true';
+
+  const endpoint = useAPI
+    ? `http://localhost:3000/user/${userId}/average-sessions`
+    : `/src/mocksData/userAverageSessionsData.json`;
+
+  const sessionsData = await get<UserSessionsData>(endpoint);
+
+  return sessionsData.sessions;
 };
 //     const response = await fetch(`/userActivityData.json`);
 
