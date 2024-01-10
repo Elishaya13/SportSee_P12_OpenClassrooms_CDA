@@ -1,4 +1,16 @@
 .session_wrapper {
     border: 1px solid red;
+    position: relative;
+    background-color: var(--graph-red-color);
     width: 30%;
+    border-radius: 5px;
+}
+
+.session_title {
+    position: absolute;
+    text-align: left;
+    color: #FF8181;
+    padding: 20px;
+    font-size: 14px;
+    width: 80%;
 }
