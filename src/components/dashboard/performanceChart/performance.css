@@ -1,4 +1,11 @@
 .performance_wrapper {
-    border: 1px solid red;
-    width: 30%;
+    background-color: var(--primary-color);
+    width: 260px;
+    height: 260px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
 }

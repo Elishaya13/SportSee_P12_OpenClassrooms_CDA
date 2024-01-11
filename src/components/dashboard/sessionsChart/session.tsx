@@ -51,7 +51,7 @@ const Session = () => {
   return (
     <div className="session_wrapper">
       <h3 className="session_title">Durée moyenne des sessions</h3>
-      <ResponsiveContainer width="100%" height="100%">
+      <ResponsiveContainer width="100%" height={260}>
         <LineChart
           width={230}
           height={250}
