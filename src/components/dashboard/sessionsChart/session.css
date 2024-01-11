@@ -2,7 +2,8 @@
     border: 1px solid red;
     position: relative;
     background-color: var(--graph-red-color);
-    width: 30%;
+    width: 260px;
+    height: 260px;
     border-radius: 5px;
 }
 

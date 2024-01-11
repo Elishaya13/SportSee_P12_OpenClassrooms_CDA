@@ -2,7 +2,6 @@
   margin: 0 auto;
   padding: 0;
   box-sizing: border-box;
-
 }
 
 .App {
@@ -13,5 +12,11 @@
 .layout_wrapper {
   display: flex;
   width: 100%;
-  min-height: 689px;
+  height: 100%;
+}
+
+@media (min-width: 1025px) {
+  .layout_wrapper {
+    width: 100%;
+  }
 }

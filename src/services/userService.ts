@@ -1,6 +1,5 @@
-// Fonction pour récupérer les informations d'un utilisateur par ID en utilisant soit l'API soit les données mock
-
 import { ActivityData, ActivitySession } from '../interfaces/activity';
+import { PerformanceData } from '../interfaces/performance';
 import { UserSession, UserSessionsData } from '../interfaces/sessions';
 import { User, UserData } from '../interfaces/users';
 import { get } from './api';
@@ -21,12 +20,9 @@ export const getUserById = async (userId: number): Promise<User> => {
 
   const userData = await get<UserData>(endpoint);
 
-  // if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-
   return formatUserData(userData);
 };
 
-// Récupérer les données d'activité pour un utilisateur depuis le fichier JSON correspondant
 export const getActivityById = async (
   userId: number
 ): Promise<ActivitySession[]> => {
@@ -54,17 +50,16 @@ export const getSessionsById = async (
 
   return sessionsData.sessions;
 };
-//     const response = await fetch(`/userActivityData.json`);
+export const getPerformanceById = async (
+  userId: number
+): Promise<PerformanceData> => {
+  const useAPI = localStorage.getItem('useApi') === 'true';
 
-// Récupérer les données de performance pour un utilisateur depuis le fichier JSON correspondant
-// export const getUserPerformanceById = async (userId, useAPI) => {
-//       response = await fetch(
-//         `http://localhost:3000/user/${userId}/performance`
-//       );
+  const endpoint = useAPI
+    ? `http://localhost:3000/user/${userId}/performance`
+    : `/src/mocksData/userPerformanceData.json`;
 
-//       response = await fetch(`/src/mocks/userPerformanceData.json`);
-//   const response = await fetch(`/userPerformanceData.json`);
+  const performanceData = await get<PerformanceData>(endpoint);
 
-// Récupérer les sessions moyennes pour un utilisateur depuis le fichier JSON correspondant
-// export const getAverageSessionsById = async (userId) => {
-//     const response = await fetch(`/userAverageSessionsData.json`);
+  return performanceData;
+};
