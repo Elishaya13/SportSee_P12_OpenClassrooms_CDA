@@ -6,11 +6,45 @@ import { UserSession } from '../../../interfaces/sessions';
 import {
   Line,
   LineChart,
+  Rectangle,
   ResponsiveContainer,
   Tooltip,
   XAxis,
   YAxis,
 } from 'recharts';
+
+interface CustomCursorProps {
+  points?: { x: number; y: number }[];
+  width?: number;
+  height?: number;
+  left?: number;
+  right?: number;
+  top?: number;
+  bottom?: number;
+}
+const CustomCursor = (props: CustomCursorProps) => {
+  const { points, width, height, top, left, right, bottom } = props;
+  if (!points || points.length === 0) {
+    return null;
+  }
+
+  const { x } = points[0];
+  const startX = left ? x - left : 0;
+
+  const totalWidth = width ? width + left! + right! : 0;
+  const calculatedHeight = height ? height + top! + bottom! : 0;
+
+  return (
+    <Rectangle
+      fill="rgba(153, 0, 0, 0.5)"
+      x={startX}
+      y={0}
+      width={totalWidth}
+      height={calculatedHeight}
+    />
+  );
+};
+
 const Session = () => {
   const { userId } = useParams<{ userId: string }>();
   const [userSessions, setUserSessions] = useState<UserSession[]>([]);
@@ -37,10 +71,6 @@ const Session = () => {
     dayName: daysOfWeek[session.day - 1],
   }));
 
-  // const firstDayData = { day: 0, dayName: '', sessionLength: 30 };
-  // const lastDayData = { day: 8, dayName: '', sessionLength: 60 };
-  // const extendedData = [firstDayData, ...transformedData, lastDayData];
-
   if (isLoading) {
     return <div>En chargement ...</div>;
   }
@@ -66,7 +96,7 @@ const Session = () => {
           />
           <YAxis hide={true} domain={['dataMin', 'dataMax']} />
           <Tooltip
-            cursor={{ stroke: 'transparent' }}
+            cursor={<CustomCursor />}
             content={({ active, payload }) => {
               if (active && payload && payload.length) {
                 const data = payload[0].payload;
@@ -101,7 +131,7 @@ const Session = () => {
             stroke="white"
             strokeWidth={2}
             dot={false}
-            activeDot={{ r: 8 }}
+            activeDot={{ r: 3 }}
           />
         </LineChart>
       </ResponsiveContainer>
