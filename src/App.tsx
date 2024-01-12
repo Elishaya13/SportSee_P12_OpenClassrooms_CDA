@@ -21,8 +21,8 @@ export function App() {
       <Route path="/" element={<Root />}>
         <Route index element={<Home />} />
         <Route path="dashboard/:userId" element={<Dashboard />} />
-        <Route path="user/:userId" element={<UnderConstruction />} />
-        <Route path="settings/:userId" element={<UnderConstruction />} />
+        <Route path="user" element={<UnderConstruction />} />
+        <Route path="settings" element={<UnderConstruction />} />
         <Route path="community" element={<UnderConstruction />} />
         {/* Route pour la page d'erreur (404) */}
         <Route path="*" element={<ErrorPage />} />
