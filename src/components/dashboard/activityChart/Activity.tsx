@@ -13,6 +13,7 @@ import { ActivitySession } from '../../../interfaces/activity';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getActivityById } from '../../../services/userService';
+import Loader from '../../loader/loader';
 
 const Activity = () => {
   const { userId } = useParams<{ userId: string }>();
@@ -24,10 +25,17 @@ const Activity = () => {
       return;
     }
     setIsLoading(true);
-    getActivityById(parseInt(userId, 10)).then((json) => {
-      setUserActivity(json);
-      setIsLoading(false);
-    });
+    getActivityById(parseInt(userId, 10))
+      .then((json) => {
+        setUserActivity(json);
+        setIsLoading(false);
+      })
+      .catch((e) => {
+        console.error(
+          'Erreur lors de la récupération des données d activités:',
+          e
+        );
+      });
   }, [userId]);
 
   // Transforms userActivity data by adding a 'dayIndex' property.
@@ -37,9 +45,13 @@ const Activity = () => {
     dayIndex: index + 1,
   }));
 
-  // To do créer Spinner
   if (isLoading) {
-    return <div>En chargement ...</div>;
+    return (
+      <div className="loader-wrapper">
+        <p>En chargement..</p>
+        <Loader />
+      </div>
+    );
   }
 
   if (!userId) {

@@ -1,3 +1,4 @@
+import './error.css';
 const ErrorPage = () => {
   return (
     <div id="error-page">

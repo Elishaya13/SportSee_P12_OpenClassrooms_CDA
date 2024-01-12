@@ -1,0 +1,19 @@
+#under-construction {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#under-construction a {
+    text-decoration: none;
+    color: var(--grey-color);
+    font-size: large;
+    margin-top: 3em;
+}
+
+#under-construction a:hover {
+    color: red
+}

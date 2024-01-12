@@ -13,8 +13,8 @@ const Topbar = () => {
           <ul>
             <Link to={`/`}>Accueil</Link>
             <Link to={`/`}>Profil</Link>
-            <Link to={`/`}>Réglages</Link>
-            <Link to={`/`}>Communauté</Link>
+            <Link to={`/settings`}>Réglages</Link>
+            <Link to={`/community`}>Communauté</Link>
           </ul>
         </div>
       </div>

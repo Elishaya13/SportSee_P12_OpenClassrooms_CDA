@@ -11,6 +11,7 @@ import {
   RadarChart,
   ResponsiveContainer,
 } from 'recharts';
+import Loader from '../../loader/loader';
 
 type TranslateKindType = {
   [key: number]: string;
@@ -43,11 +44,20 @@ const Performance = () => {
     if (!userId) {
       return;
     }
+
     setIsLoading(true);
-    getPerformanceById(parseInt(userId, 10)).then((json) => {
-      setPerformanceValue(json.data);
-      setIsLoading(false);
-    });
+
+    getPerformanceById(parseInt(userId, 10))
+      .then((json) => {
+        setPerformanceValue(json.data);
+        setIsLoading(false);
+      })
+      .catch((e) => {
+        console.error(
+          'Erreur lors de la récupération des données de performance:',
+          e
+        );
+      });
   }, [userId]);
 
   useEffect(() => {
@@ -66,7 +76,12 @@ const Performance = () => {
   }, [performanceValue]);
 
   if (isLoading) {
-    return <div>En chargement ...</div>;
+    return (
+      <div className="loader-wrapper">
+        <p>En chargement..</p>
+        <Loader />
+      </div>
+    );
   }
 
   if (!userId) {
@@ -75,7 +90,7 @@ const Performance = () => {
 
   return (
     <div className="performance_wrapper">
-      <ResponsiveContainer width={260} height={260}>
+      <ResponsiveContainer width="100%" height={260}>
         <RadarChart outerRadius={80} data={data}>
           <PolarGrid
             gridType="polygon"

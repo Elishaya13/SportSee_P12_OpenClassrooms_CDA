@@ -7,11 +7,11 @@
 }
 
 .icons_part {
-    height: 60vh;
+    height: 64vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
     gap: 1em;
 }
 
@@ -21,9 +21,10 @@
 }
 
 .copyright {
-    flex: 4;
+    height: 57vh;
     display: flex;
     align-items: center;
+    padding-top: 25em;
 }
 
 .copyright p {
@@ -31,5 +32,26 @@
     color: #fff;
     transform: rotate(270deg) translateY(-50%);
     text-wrap: nowrap;
+}
 
+@media (min-width: 1025px) {
+    .icons_part {
+        height: 72vh;
+        justify-content: flex-end;
+    }
+
+    .copyright {
+        padding-top: 5em;
+    }
+}
+
+@media (min-width: 1600px) {
+    .icons_part {
+        flex: 7;
+        padding-top: 2.2em;
+    }
+
+    .copyright {
+        flex: 4;
+    }
 }

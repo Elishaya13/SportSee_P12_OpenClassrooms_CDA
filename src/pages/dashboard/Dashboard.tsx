@@ -1,6 +1,6 @@
 import './dashboard.css';
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { Navigate, useParams } from 'react-router-dom';
 import { getUserById } from '../../services/userService';
 import { UserData } from '../../interfaces/users';
 import Header from '../../components/dashboard/header/Header';
@@ -9,24 +9,50 @@ import Performance from '../../components/dashboard/performanceChart/Performance
 import Session from '../../components/dashboard/sessionsChart/session';
 import Score from '../../components/dashboard/scoreChart/score';
 import NutritionInfo from '../../components/dashboard/nutritionInfos/NutritionInfo';
+import Loader from '../../components/loader/loader';
 
 const Dashboard = () => {
   const { userId } = useParams<{ userId: string }>();
   const [user, setUser] = useState<UserData | null>(null);
-  // const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     if (!userId) {
       return;
     }
-    getUserById(parseInt(userId, 10)).then((json) => {
-      setUser(json);
-    });
-    //  .catch((e) => setError(e));
+    setIsLoading(true);
+
+    getUserById(parseInt(userId, 10))
+      .then((json) => {
+        setUser(json);
+        setIsLoading(false);
+      })
+      .catch((e) => {
+        console.error(
+          'Erreur lors de la récupération des données de l utilisateur:',
+          e
+        );
+        setError(e);
+      });
   }, [userId]);
 
-  if (user == undefined) {
+  if (isLoading) {
+    return (
+      <div className="dashboard-loader">
+        <div className="loader-wrapper">
+          <p>En chargement..</p>
+          <Loader />
+        </div>
+      </div>
+    );
+  }
+  if (!userId) {
     return <div id="dashboard_error">L&apos;utilisateur est inexistant</div>;
+  }
+
+  if (error) {
+    return <Navigate to="/error" />;
   }
 
   if (user) {
@@ -44,11 +70,19 @@ const Dashboard = () => {
             <div className="dashboard_section_left_second">
               <Session />
               <Performance />
-              <Score todayScore={todayScore} />
+              {todayScore !== undefined ? (
+                <Score todayScore={todayScore} />
+              ) : (
+                <Loader />
+              )}
             </div>
           </div>
           <div className="dashboard_section_right">
-            <NutritionInfo keyData={keyData} />
+            {keyData !== undefined ? (
+              <NutritionInfo keyData={keyData} />
+            ) : (
+              <Loader />
+            )}
           </div>
         </div>
       </div>
