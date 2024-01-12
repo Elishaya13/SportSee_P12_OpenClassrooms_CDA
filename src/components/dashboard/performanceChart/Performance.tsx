@@ -11,6 +11,7 @@ import {
   RadarChart,
   ResponsiveContainer,
 } from 'recharts';
+import Loader from '../../loader/loader';
 
 type TranslateKindType = {
   [key: number]: string;
@@ -75,7 +76,12 @@ const Performance = () => {
   }, [performanceValue]);
 
   if (isLoading) {
-    return <div>En chargement ...</div>;
+    return (
+      <div className="loader-wrapper">
+        <p>En chargement..</p>
+        <Loader />
+      </div>
+    );
   }
 
   if (!userId) {

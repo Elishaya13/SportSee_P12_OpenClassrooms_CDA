@@ -12,6 +12,7 @@ import {
   XAxis,
   YAxis,
 } from 'recharts';
+import Loader from '../../loader/loader';
 
 interface CustomCursorProps {
   points?: { x: number; y: number }[];
@@ -76,8 +77,14 @@ const Session = () => {
   }));
 
   if (isLoading) {
-    return <div>En chargement ...</div>;
+    return (
+      <div className="loader-wrapper">
+        <p>En chargement..</p>
+        <Loader />
+      </div>
+    );
   }
+
   if (!userId) {
     return <div> L'utilisateur n'existe pas</div>;
   }

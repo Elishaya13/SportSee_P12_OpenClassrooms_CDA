@@ -13,6 +13,7 @@ import { ActivitySession } from '../../../interfaces/activity';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getActivityById } from '../../../services/userService';
+import Loader from '../../loader/loader';
 
 const Activity = () => {
   const { userId } = useParams<{ userId: string }>();
@@ -45,7 +46,12 @@ const Activity = () => {
   }));
 
   if (isLoading) {
-    return <div>En chargement ...</div>;
+    return (
+      <div className="loader-wrapper">
+        <p>En chargement..</p>
+        <Loader />
+      </div>
+    );
   }
 
   if (!userId) {

@@ -44,3 +44,14 @@
         padding-top: 5em;
     }
 }
+
+@media (min-width: 1600px) {
+    .icons_part {
+        flex: 7;
+        padding-top: 2.2em;
+    }
+
+    .copyright {
+        flex: 4;
+    }
+}

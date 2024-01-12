@@ -41,6 +41,13 @@
     justify-content: space-between;
 }
 
+.dashboard-loader {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 @media screen and (min-height: 781px) {
     #dashboard_wrapper {
         height: 100vh;
@@ -84,4 +91,15 @@
         height: 60%;
         justify-content: space-between;
     }
+}
+
+@media (min-width: 1600px) {
+    .dashboard_section_left {
+        flex: 9;
+    }
+
+    .dashboard_section_right {
+        flex: 3;
+    }
+
 }
