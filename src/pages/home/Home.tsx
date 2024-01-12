@@ -47,11 +47,10 @@ const Home = () => {
               <li>
                 <Link to={`dashboard/12`}>Utilisateur 1</Link>
               </li>
-              {isUseAPI && (
-                <li>
-                  <Link to={`dashboard/18`}>Utilisateur 2</Link>
-                </li>
-              )}
+
+              <li>
+                <Link to={`dashboard/18`}>Utilisateur 2</Link>
+              </li>
             </ul>
           </nav>
         </div>

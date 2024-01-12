@@ -16,7 +16,7 @@ export const getUserById = async (userId: number): Promise<User> => {
 
   const endpoint = useAPI
     ? `http://localhost:3000/user/${userId}`
-    : `/src/mocksData/userData.json`;
+    : `/src/mocksData/${userId}/userData.json`;
 
   const userData = await get<UserData>(endpoint);
 
@@ -30,7 +30,7 @@ export const getActivityById = async (
 
   const endpoint = useAPI
     ? `http://localhost:3000/user/${userId}/activity`
-    : `/src/mocksData/userActivityData.json`;
+    : `/src/mocksData/${userId}/userActivityData.json`;
 
   const activityData = await get<ActivityData>(endpoint);
 
@@ -44,7 +44,7 @@ export const getSessionsById = async (
 
   const endpoint = useAPI
     ? `http://localhost:3000/user/${userId}/average-sessions`
-    : `/src/mocksData/userAverageSessionsData.json`;
+    : `/src/mocksData/${userId}/userAverageSessionsData.json`;
 
   const sessionsData = await get<UserSessionsData>(endpoint);
 
@@ -57,7 +57,7 @@ export const getPerformanceById = async (
 
   const endpoint = useAPI
     ? `http://localhost:3000/user/${userId}/performance`
-    : `/src/mocksData/userPerformanceData.json`;
+    : `/src/mocksData/${userId}/userPerformanceData.json`;
 
   const performanceData = await get<PerformanceData>(endpoint);
 
