@@ -24,10 +24,17 @@ const Activity = () => {
       return;
     }
     setIsLoading(true);
-    getActivityById(parseInt(userId, 10)).then((json) => {
-      setUserActivity(json);
-      setIsLoading(false);
-    });
+    getActivityById(parseInt(userId, 10))
+      .then((json) => {
+        setUserActivity(json);
+        setIsLoading(false);
+      })
+      .catch((e) => {
+        console.error(
+          'Erreur lors de la récupération des données d activités:',
+          e
+        );
+      });
   }, [userId]);
 
   // Transforms userActivity data by adding a 'dayIndex' property.
@@ -37,7 +44,6 @@ const Activity = () => {
     dayIndex: index + 1,
   }));
 
-  // To do créer Spinner
   if (isLoading) {
     return <div>En chargement ...</div>;
   }

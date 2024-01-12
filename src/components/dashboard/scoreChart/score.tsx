@@ -18,7 +18,7 @@ const Score = ({ todayScore }: Pick<UserData, 'todayScore'>) => {
         <p className="score-text">{pourcentScore} %</p>
         <p className="sub-text">de votre objectif</p>
       </div>
-      <ResponsiveContainer minWidth={230} width="99%" height={260}>
+      <ResponsiveContainer width="100%" height={260}>
         <RadialBarChart
           width={260}
           height={260}

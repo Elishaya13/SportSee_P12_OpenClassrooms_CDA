@@ -1,5 +1,5 @@
-import { useParams } from 'react-router-dom';
 import './session.css';
+import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getSessionsById } from '../../../services/userService';
 import { UserSession } from '../../../interfaces/sessions';
@@ -49,19 +49,23 @@ const Session = () => {
   const { userId } = useParams<{ userId: string }>();
   const [userSessions, setUserSessions] = useState<UserSession[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  // const [error, setError] = useState(null);
 
   useEffect(() => {
     if (!userId) {
       return;
     }
     setIsLoading(true);
-    getSessionsById(parseInt(userId, 10)).then((json) => {
-      setUserSessions(json);
-      // console.log(json);
-      setIsLoading(false);
-    });
-    //  .catch((e) => setError(e));
+    getSessionsById(parseInt(userId, 10))
+      .then((json) => {
+        setUserSessions(json);
+        setIsLoading(false);
+      })
+      .catch((e) => {
+        console.error(
+          'Erreur lors de la récupération des données de sessions:',
+          e
+        );
+      });
   }, [userId]);
 
   const daysOfWeek = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];

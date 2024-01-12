@@ -13,19 +13,32 @@ import NutritionInfo from '../../components/dashboard/nutritionInfos/NutritionIn
 const Dashboard = () => {
   const { userId } = useParams<{ userId: string }>();
   const [user, setUser] = useState<UserData | null>(null);
-  // const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
     if (!userId) {
       return;
     }
-    getUserById(parseInt(userId, 10)).then((json) => {
-      setUser(json);
-    });
-    //  .catch((e) => setError(e));
+    setIsLoading(true);
+
+    getUserById(parseInt(userId, 10))
+      .then((json) => {
+        setUser(json);
+        setIsLoading(false);
+      })
+      .catch((e) => {
+        console.error(
+          'Erreur lors de la récupération des données de l utilisateur:',
+          e
+        );
+      });
   }, [userId]);
 
-  if (user == undefined) {
+  if (isLoading) {
+    return <div>En chargement ...</div>;
+  }
+
+  if (!userId) {
     return <div id="dashboard_error">L&apos;utilisateur est inexistant</div>;
   }
 

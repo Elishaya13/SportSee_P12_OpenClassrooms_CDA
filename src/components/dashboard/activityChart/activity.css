@@ -1,10 +1,8 @@
 .activity_wrapper {
-    /* border: 1px solid red; */
     background-color: var(--background-color);
     height: 102%;
     position: relative;
     border-radius: 5px;
-    width: 100%;
 }
 
 .title_charts {
@@ -13,10 +11,4 @@
     left: 30px;
     font-size: 15px;
     font-weight: 600;
-}
-
-@media (min-width: 1025px) {
-    .activity_wrapper {
-        width: 100%;
-    }
 }

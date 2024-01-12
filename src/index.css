@@ -2,15 +2,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-
 }
 
 :root {
   --primary-color: #020203;
   --secondary-color: #FF0101;
   --graph-red-color: #ff0000;
-  /* --background-color: #fbfbfb; */
-  /* --background-color: #f4f4f4; */
   --background-color: #fafafa;
   --grey-color: #74798c;
   --fontSize-m: 1.5em
