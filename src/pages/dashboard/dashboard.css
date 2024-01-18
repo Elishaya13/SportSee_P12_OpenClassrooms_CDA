@@ -27,10 +27,14 @@
     gap: 1.5em;
 }
 
+.dashboard_section_right {
+    height: 100vh;
+}
+
 .dashboard_section_left {
     display: flex;
     flex-direction: column;
-    gap: 1.5em;
+    gap: 2.5em;
     padding-bottom: 30px;
 }
 
@@ -46,12 +50,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-@media screen and (min-height: 781px) {
-    #dashboard_wrapper {
-        height: 100vh;
-    }
 }
 
 @media (min-width: 1025px) {
@@ -70,16 +68,15 @@
     }
 
     .dashboard_section_right {
-        height: 82%;
         display: flex;
         justify-content: center;
     }
 
     .dashboard_section_left {
-        width: 95%;
+        width: 100%;
         height: 90%;
         padding: 0;
-        gap: 3.5em;
+        gap: 4.5em;
     }
 
     .dashboard_section_left_first {
@@ -94,6 +91,14 @@
 }
 
 @media (min-width: 1600px) {
+    .dashboard_header {
+        flex: auto;
+    }
+
+    .dashboard_content {
+        flex: auto;
+    }
+
     .dashboard_section_left {
         flex: 9;
     }

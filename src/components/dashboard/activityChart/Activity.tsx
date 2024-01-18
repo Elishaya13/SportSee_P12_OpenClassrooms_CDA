@@ -13,7 +13,7 @@ import { ActivitySession } from '../../../interfaces/activity';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getActivityById } from '../../../services/userService';
-import Loader from '../../loader/loader';
+import Loader from '../../loader/Loader';
 
 const Activity = () => {
   const { userId } = useParams<{ userId: string }>();
@@ -61,7 +61,7 @@ const Activity = () => {
   return (
     <div className="activity_wrapper">
       <p className="title_charts">Activité quotidienne</p>
-      <ResponsiveContainer width="100%" height={255}>
+      <ResponsiveContainer width="100%" height={320}>
         <BarChart
           data={transformedData}
           margin={{ top: 5, right: 30, left: 30, bottom: 0 }}

@@ -1,6 +1,6 @@
 import './session.css';
 import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { getSessionsById } from '../../../services/userService';
 import { UserSession } from '../../../interfaces/sessions';
 import {
@@ -12,36 +12,47 @@ import {
   XAxis,
   YAxis,
 } from 'recharts';
-import Loader from '../../loader/loader';
+import Loader from '../../loader/Loader';
 
 interface CustomCursorProps {
-  points?: { x: number; y: number }[];
-  width?: number;
-  height?: number;
-  left?: number;
-  right?: number;
-  top?: number;
-  bottom?: number;
+  points: { x: number; y: number }[];
+  width: number;
+  height: number;
+  left: number;
+  right: number;
+  top: number;
+  bottom: number;
 }
-const CustomCursor = (props: CustomCursorProps) => {
+
+const isCustomCursorProps = (
+  props: CustomCursorProps | object
+): props is CustomCursorProps => {
+  return !!Object.keys(props).length;
+};
+
+const CustomCursor: FC<CustomCursorProps | object> = (props) => {
+  if (!isCustomCursorProps(props)) {
+    return null;
+  }
+
   const { points, width, height, top, left, right, bottom } = props;
+
   if (!points || points.length === 0) {
     return null;
   }
 
   const { x } = points[0];
-  const startX = left ? x - left : 0;
 
-  const totalWidth = width ? width + left! + right! : 0;
-  const calculatedHeight = height ? height + top! + bottom! : 0;
+  const totalWidth = width + left + right - x;
+  const totalHeight = height + top + bottom;
 
   return (
     <Rectangle
       fill="rgba(153, 0, 0, 0.5)"
-      x={startX}
+      x={x}
       y={0}
       width={totalWidth}
-      height={calculatedHeight}
+      height={totalHeight}
     />
   );
 };
@@ -97,7 +108,7 @@ const Session = () => {
           width={230}
           height={250}
           data={transformedData}
-          margin={{ top: 80, right: 20, bottom: 0, left: 20 }}
+          margin={{ top: 80, right: 10, bottom: 0, left: 10 }}
         >
           <XAxis
             dataKey="dayName"
@@ -106,6 +117,14 @@ const Session = () => {
             tickLine={false}
           />
           <YAxis hide={true} domain={['dataMin', 'dataMax']} />
+
+          <defs>
+            <linearGradient id="colorUv" x1="0" y1="0" x2="100%" y2="0">
+              <stop offset="30%" stopColor="#FFFFFF" stopOpacity={0.4} />
+              <stop offset="100%" stopColor="#FFFFFF" stopOpacity={1} />
+            </linearGradient>
+          </defs>
+
           <Tooltip
             cursor={<CustomCursor />}
             content={({ active, payload }) => {
@@ -131,18 +150,16 @@ const Session = () => {
                   </div>
                 );
               }
-
               return null;
             }}
-            labelFormatter={() => ''}
           />
           <Line
             type="monotone"
             dataKey="sessionLength"
-            stroke="white"
+            stroke="url(#colorUv)"
             strokeWidth={2}
             dot={false}
-            activeDot={{ r: 3 }}
+            activeDot={{ r: 3, fill: '#fff' }}
           />
         </LineChart>
       </ResponsiveContainer>

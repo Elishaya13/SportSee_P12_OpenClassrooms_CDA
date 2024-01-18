@@ -11,7 +11,7 @@ import {
   RadarChart,
   ResponsiveContainer,
 } from 'recharts';
-import Loader from '../../loader/loader';
+import Loader from '../../loader/Loader';
 
 type TranslateKindType = {
   [key: number]: string;
@@ -114,7 +114,6 @@ const Performance = () => {
             fill="#ff0101"
             fillOpacity={0.7}
           />
-          {/* <Legend /> */}
         </RadarChart>
       </ResponsiveContainer>
     </div>
