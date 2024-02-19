@@ -10,13 +10,13 @@
 @media (min-width: 1025px) {
     .nutrition_wrapper {
         width: 90%;
-        justify-content: space-between;
-        height: 77%;
+        height: 100%;
+        gap: 8.8rem;
     }
 }
 
 @media (min-width: 1600px) {
     .nutrition_wrapper {
-        height: 74%;
+        gap: 0;
     }
 }

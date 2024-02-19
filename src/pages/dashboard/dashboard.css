@@ -28,7 +28,7 @@
 }
 
 .dashboard_section_right {
-    height: 100vh;
+    height: 100vh;   
 }
 
 .dashboard_section_left {
@@ -70,6 +70,7 @@
     .dashboard_section_right {
         display: flex;
         justify-content: center;
+        height: 90%;
     }
 
     .dashboard_section_left {
@@ -77,6 +78,7 @@
         height: 90%;
         padding: 0;
         gap: 4.5em;
+        justify-content: space-between;
     }
 
     .dashboard_section_left_first {
@@ -85,7 +87,7 @@
 
     .dashboard_section_left_second {
         flex-wrap: nowrap;
-        height: 60%;
+        /* height: 60%; */
         justify-content: space-between;
     }
 }

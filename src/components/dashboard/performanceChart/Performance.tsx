@@ -1,5 +1,5 @@
-import { useParams } from 'react-router-dom';
 import './performance.css';
+import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getPerformanceById } from '../../../services/userService';
 import { PerformanceValues } from '../../../interfaces/performance';
@@ -13,9 +13,7 @@ import {
 } from 'recharts';
 import Loader from '../../loader/Loader';
 
-type TranslateKindType = {
-  [key: number]: string;
-};
+type TranslateKindType = Record<number, string>;
 
 const translateKind: TranslateKindType = {
   1: 'Cardio',
