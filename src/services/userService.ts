@@ -4,6 +4,7 @@ import { UserSession, UserSessionsData } from '../interfaces/sessions';
 import { User, UserData } from '../interfaces/users';
 import { get } from './api';
 
+// formatUserData function is used to format the user data to match the User interface structure.
 const formatUserData = (userData: UserData): User => {
   return {
     ...userData,
@@ -50,6 +51,7 @@ export const getSessionsById = async (
 
   return sessionsData.sessions;
 };
+
 export const getPerformanceById = async (
   userId: number
 ): Promise<PerformanceData> => {

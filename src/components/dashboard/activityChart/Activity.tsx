@@ -28,13 +28,15 @@ const Activity = () => {
     getActivityById(parseInt(userId, 10))
       .then((json) => {
         setUserActivity(json);
-        setIsLoading(false);
       })
       .catch((e) => {
         console.error(
           'Erreur lors de la récupération des données d activités:',
           e
         );
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   }, [userId]);
 

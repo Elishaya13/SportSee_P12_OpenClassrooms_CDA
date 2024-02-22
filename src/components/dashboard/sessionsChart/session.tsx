@@ -70,13 +70,15 @@ const Session = () => {
     getSessionsById(parseInt(userId, 10))
       .then((json) => {
         setUserSessions(json);
-        setIsLoading(false);
       })
       .catch((e) => {
         console.error(
           'Erreur lors de la récupération des données de sessions:',
           e
         );
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   }, [userId]);
 

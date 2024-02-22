@@ -48,13 +48,15 @@ const Performance = () => {
     getPerformanceById(parseInt(userId, 10))
       .then((json) => {
         setPerformanceValue(json.data);
-        setIsLoading(false);
       })
       .catch((e) => {
         console.error(
           'Erreur lors de la récupération des données de performance:',
           e
         );
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   }, [userId]);
 
