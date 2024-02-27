@@ -33,6 +33,8 @@ const Home = () => {
           {isUseAPI ? (
             <p className="data_select_info_text">
               Données actuellement récupérées de l&apos;api
+              <br />
+              <em>(ne fonctionne pas sur vercel car le backend n'est pas hebergé)</em>
             </p>
           ) : (
             <p className="data_select_info_text">
