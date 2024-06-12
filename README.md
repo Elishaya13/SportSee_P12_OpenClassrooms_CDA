@@ -18,6 +18,6 @@
 
 ## Screenshots
 
-![App Screenshot](https://i.ibb.co/Sdbr9xx/sportsee-screen.png)
+![App Screenshot 2](https://pictures.angiepons.fr/images/other/sportsee-screen.png)
 
 Elishaya13
